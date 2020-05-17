@@ -16,6 +16,7 @@ public class DragForce : MonoBehaviour
 
     Vector3 startPos;
     Vector3 endPos;
+    Vector3 placeHoldPos;
 
     public TrajectoryLine tl;
 

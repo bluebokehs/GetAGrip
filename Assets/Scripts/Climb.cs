@@ -15,11 +15,11 @@ public class Climb : MonoBehaviour
 
     public Vector2 targetposition;
 
-    public StaminaBar staminaBar;
-
     public GameObject target;
 
     public bool touch = true;
+
+    public StaminaBar staminaBar;
 
     public Sprite blueImage;
     public Sprite redImage;
@@ -28,8 +28,6 @@ public class Climb : MonoBehaviour
 
     void Start()
 	{
-        staminaBar = GameObject.Find("StaminaBar").GetComponent<StaminaBar>();
-
         target = GameObject.Find("Target");
     }
 
@@ -39,29 +37,21 @@ public class Climb : MonoBehaviour
         animator.SetBool("isClimbing", false);
         GameObject hold = GameObject.Find("Hold(Clone)");
 
-        //allows user to climb to each hold
-        transform.position = Vector2.MoveTowards(transform.position, targetposition, speed * Time.deltaTime);
-        if (Input.touchCount == 1 && touch)
+        if (hold.GetComponent<Collider2D>() == Physics2D.OverlapPoint(targetposition))
         {
-            Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            Vector2 touchPos = new Vector2(wp.x, wp.y);
+            Vector2 holdPosition = new Vector2(hold.transform.position.x, hold.transform.position.y - 1);
+            targetposition = holdPosition;
+            hold.name = "Hold(Clone)" + number;
+            number++;
+            //animate
+            StartCoroutine(Animate());
 
-            if (hold.GetComponent<Collider2D>() == Physics2D.OverlapPoint(touchPos))
+            //decides rest time
+            if (staminaBar.slider.value != 50)
             {
-                Vector2 holdPosition = new Vector2(hold.transform.position.x, hold.transform.position.y - 1);
-                targetposition = holdPosition;
-                hold.name = "Hold(Clone)" + number;
-                number++;
-                //animate
-                StartCoroutine(Animate());
-
-                //decides rest time
-                if (staminaBar.slider.value != 50)
-                {
-                    waitTime = Mathf.Abs(50 - staminaBar.slider.value) / 10;
-                    //rest
-                    StartCoroutine(Rest());
-                }
+                waitTime = Mathf.Abs(50 - staminaBar.slider.value) / 10;
+                //rest
+                StartCoroutine(Rest());
             }
         }
     }
