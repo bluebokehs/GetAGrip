@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class DragForce : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class DragForce : MonoBehaviour
 
     public Vector2 minPower;
     public Vector2 maxPower;
+
+    public double multiplier = 1.5;
 
     Camera camera;
     Vector3 camOffset = new Vector3(0, 0, 15);
@@ -19,6 +22,7 @@ public class DragForce : MonoBehaviour
     Vector3 placeHoldPos;
 
     public TrajectoryLine tl;
+    public PlayerHealth ph;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +37,6 @@ public class DragForce : MonoBehaviour
         // check for a single touch 
         if (Input.touchCount > 0)
         {
-
 
             Touch touch = Input.GetTouch(0);
 
@@ -55,6 +58,9 @@ public class DragForce : MonoBehaviour
 
                 force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
                 rb.AddForce(force * power, ForceMode2D.Impulse);
+
+                ph.TakeDamage((int) Convert.ToDouble(Math.Abs(force.y * multiplier)));
+
                 tl.EndLine();
             }
         }

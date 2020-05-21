@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class TrajectoryLine : MonoBehaviour
 {
-    public LineRenderer lr;
+    LineRenderer lr;
     
     void Awake()
     {
@@ -15,6 +15,7 @@ public class TrajectoryLine : MonoBehaviour
     // Update is called once per frame
     public void RenderLine(Vector3 startPos, Vector3 endPos)
     {
+        lr.enabled = true;
         lr.positionCount = 2;
         Vector3[] points = new Vector3[2];
         points[0] = startPos;
