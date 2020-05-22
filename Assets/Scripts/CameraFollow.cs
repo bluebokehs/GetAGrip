@@ -9,18 +9,21 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 0.9f;
     public Vector3 offset;
 
+    private Vector3 currentVel;
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        //if (target.position.y > transform.position.y)
-        //{
-        //    Vector3 newPos = new Vector3(transform.position.x, target.position.y, transform.position.z);
-        //    transform.position = newPos;
-        //}
+        if (target.position.y > transform.position.y)
+        {
+            Vector3 newPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+            transform.position = Vector3.SmoothDamp(transform.position, newPos, ref currentVel, smoothSpeed * Time.deltaTime);
+        }
 
-        Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
-        Vector3 newPos = new Vector3(transform.position.x, smoothedPosition.y, transform.position.z);
-        transform.position = newPos;
+
+        if (target.position.y < transform.FindChild("Edge").position.y)
+		{
+            FindObjectOfType<GameManager>().EndGame();
+		}
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class DragForce : MonoBehaviour
 {
@@ -24,11 +25,18 @@ public class DragForce : MonoBehaviour
     public TrajectoryLine tl;
     public PlayerHealth ph;
 
+    public Slider stamina;
+
+    public Glue glue;
+    public GameObject glueObject;
+
     // Start is called before the first frame update
     void Start()
     {
         camera = Camera.main;
         tl = GetComponent<TrajectoryLine>();
+        glue = null;
+        glueObject = null;
     }
 
     // Update is called once per frame
@@ -54,12 +62,25 @@ public class DragForce : MonoBehaviour
             // when the finger leaves the screen
             if (touch.phase == TouchPhase.Ended)
             {
+                glueObject = GameObject.Find("glue");
+
+                // the glue is dettached
+                if (glueObject != null)
+                {
+                    glueObject.GetComponent<Glue>().DettachObject(gameObject);
+                    Destroy(glueObject);
+                }
+                
                 endPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
 
                 force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
-                rb.AddForce(force * power, ForceMode2D.Impulse);
+                int damage = (int)Convert.ToDouble(Math.Abs(force.y * multiplier));
 
-                ph.TakeDamage((int) Convert.ToDouble(Math.Abs(force.y * multiplier)));
+                if (damage <= stamina.value)
+                {
+                    rb.AddForce(force * power, ForceMode2D.Impulse);
+                    ph.TakeDamage(damage);
+                }
 
                 tl.EndLine();
             }

@@ -9,6 +9,8 @@ public class Climb : MonoBehaviour
 
     public Animator animator;
 
+    public GameObject ground;
+
     // Update is called once per frame
     void Update()
     {
@@ -16,28 +18,35 @@ public class Climb : MonoBehaviour
 
         //animate
         StartCoroutine(Animate());
+
+        // when climber lets go of the next force, the glue deletes
+        //if ()
+        //{
+        //    glue.DettachObject(gameObject);
+        //}
     }
 
     void CreateGlue(Vector3 position, GameObject other)
     {
-        var glue = (new GameObject("glue")).AddComponent<Glue>();
+        if (other != ground)
+		{
+            var glue = (new GameObject("glue")).AddComponent<Glue>();
 
-        // glue position at the contact point
-        glue.transform.position = position;
+            // glue position at the contact point
+            glue.transform.position = position;
 
-        // We make the object we collided with a parent of glue object
-        glue.transform.SetParent(other.transform);
+            // We make the object we collided with a parent of glue object
+            glue.transform.SetParent(other.transform);
 
-        // And now we call glue initialization
-        glue.AttachObject(gameObject);
+            // And now we call glue initialization
+            glue.AttachObject(gameObject);
+        }
     }
 
-    void OnCollision2DEnter(Collision2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         // On collision we simply create a glue object at any contact point.
         CreateGlue(col.contacts[0].point, col.gameObject);
-
-        Debug.Log("test");
     }
 
     IEnumerator Animate()
