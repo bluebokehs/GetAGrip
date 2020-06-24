@@ -7,21 +7,22 @@ public class CameraFollow : MonoBehaviour
 
     public Transform target;
     public float smoothSpeed = 0.9f;
-    public Vector3 offset;
+    public float offset;
 
     private Vector3 currentVel;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (target.position.y > transform.position.y)
+        // brings camera up higher
+        if (target.position.y + offset > transform.position.y)
         {
-            Vector3 newPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+            Vector3 newPos = new Vector3(transform.position.x, target.position.y + offset, transform.position.z);
             transform.position = Vector3.SmoothDamp(transform.position, newPos, ref currentVel, smoothSpeed * Time.deltaTime);
         }
 
-
-        if (target.position.y < transform.FindChild("Edge").position.y)
+        // if the player falls below camera, game over
+        if (target.position.y < transform.Find("Edge").position.y)
 		{
             FindObjectOfType<GameManager>().EndGame();
 		}

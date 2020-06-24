@@ -30,6 +30,10 @@ public class DragForce : MonoBehaviour
     public Glue glue;
     public GameObject glueObject;
 
+    public bool isAttached = true;
+
+    public AudioSource jumpSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,48 +46,68 @@ public class DragForce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Mathf.Clamp(GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().velocity.y, -1, 1);
+
         // check for a single touch 
         if (Input.touchCount > 0)
         {
 
             Touch touch = Input.GetTouch(0);
 
-            // when the finger hits the screen
-            if (touch.phase == TouchPhase.Began)
+            if (isAttached == true)
             {
-                startPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
-            }
-            // when the finger drags across the screen
-            if (touch.phase == TouchPhase.Moved)
-            {
-                Vector3 currentPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
-                tl.RenderLine(startPos, currentPos);
-            }
-            // when the finger leaves the screen
-            if (touch.phase == TouchPhase.Ended)
-            {
-                glueObject = GameObject.Find("glue");
-
-                // the glue is dettached
-                if (glueObject != null)
+                // when the finger hits the screen
+                if (touch.phase == TouchPhase.Began)
                 {
-                    glueObject.GetComponent<Glue>().DettachObject(gameObject);
-                    Destroy(glueObject);
+                    startPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
                 }
-                
-                endPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
-
-                force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
-                int damage = (int)Convert.ToDouble(Math.Abs(force.y * multiplier));
-
-                if (damage <= stamina.value)
+                // when the finger drags across the screen
+                if (touch.phase == TouchPhase.Moved)
                 {
-                    rb.AddForce(force * power, ForceMode2D.Impulse);
-                    ph.TakeDamage(damage);
+                    Vector3 currentPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
+                    tl.RenderLine(startPos, currentPos);
                 }
+                // when the finger leaves the screen
+                if (touch.phase == TouchPhase.Ended)
+                {
+                    glueObject = GameObject.Find("glue");
 
-                tl.EndLine();
+                    // the glue is dettached
+                    if (glueObject != null)
+                    {
+                        glueObject.GetComponent<Glue>().DettachObject(gameObject);
+                        Destroy(glueObject);
+                        isAttached = false;
+                    }
+                    else
+                    {
+                        isAttached = true;
+                    }
+
+                    endPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
+
+                    // creates the force output
+                    force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
+                    int damage = (int)Convert.ToDouble(Math.Abs(force.y * multiplier));
+
+                    // checks to see if there is enough stamina, then moves and takes stamina
+                    if (damage <= stamina.value)
+                    {
+                        rb.AddForce(force * power, ForceMode2D.Impulse);
+                        ph.TakeDamage(damage);
+                    }
+
+                    StartCoroutine(FinishSound());
+
+                    tl.EndLine();
+                }
             }
         }
+    }
+
+    IEnumerator FinishSound()
+    {
+        jumpSound.Play();
+        yield return new WaitForSeconds(jumpSound.clip.length);
     }
 }

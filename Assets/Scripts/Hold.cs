@@ -4,15 +4,50 @@ using UnityEngine;
 
 public class Hold : MonoBehaviour
 {
+    public string holdName;
+    public string description;
 
-    public GameObject edge;
+    public SpriteRenderer holdSprite;
 
-    void Update()
+    public int staminaCost;
+    public int degrationTime;
+
+    DragForce dragForce;
+
+    HoldGenerator holdGenerator;
+
+    void Start()
     {
-        //if hold goes below view, it gets destroyed to save on memory
-        if(transform.position.y < edge.transform.position.y * 1.2)
-		{
-            Destroy(this.gameObject);
-		}
+        holdSprite = this.GetComponent<SpriteRenderer>();
+        dragForce = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+
+        holdGenerator = GameObject.FindGameObjectWithTag("Generator").GetComponent<HoldGenerator>();
+    }
+
+    public void RemoveObject()
+    {
+        holdGenerator.RemoveObject();
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (degrationTime > 0)
+        {
+            //StartCoroutine(Degrade(degrationTime));
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        RemoveObject();
+    }
+
+    IEnumerator Degrade(int waitTime)
+    {
+        Debug.Log("before");
+        yield return new WaitForSeconds(waitTime);
+        Debug.Log("after");
+        RemoveObject();
+        Debug.Log("removed");
     }
 }

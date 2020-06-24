@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Generator
+  - Hold
   layers:
   - Default
   - TransparentFX
@@ -41,7 +43,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Interactables
+  - name: Foreground
     uniqueID: 4022084073
     locked: 0
   - name: Player

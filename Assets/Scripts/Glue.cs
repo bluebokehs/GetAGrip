@@ -42,8 +42,6 @@ public class Glue : MonoBehaviour
         // makes a hold a trigger in order to pass through the hold
         var col = hold.GetComponent<Collider2D>();
         col.isTrigger = true;
-
-        //StartCoroutine(MakeTriggerFalse(col));
     }
 
     IEnumerator MakeTriggerFalse(Collider2D collision)
