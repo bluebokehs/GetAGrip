@@ -44,14 +44,6 @@ public class Glue : MonoBehaviour
         col.isTrigger = true;
     }
 
-    IEnumerator MakeTriggerFalse(Collider2D collision)
-	{
-        collision.isTrigger = true;
-        yield return new WaitForSeconds(5f);
-        Debug.Log("test");
-        collision.isTrigger = false;
-    }
-
     public void LateUpdate()
     {
         if (stuckTo != null)

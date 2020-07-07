@@ -22,14 +22,12 @@ public class DragForce : MonoBehaviour
     Vector3 endPos;
     Vector3 placeHoldPos;
 
-    public TrajectoryLine tl;
+    TrajectoryLine tl;
     public PlayerHealth ph;
 
     public Slider stamina;
 
-    public Glue glue;
-    public GameObject glueObject;
-
+    GameObject glueObject;
     public bool isAttached = true;
 
     public AudioSource jumpSound;
@@ -39,7 +37,6 @@ public class DragForce : MonoBehaviour
     {
         camera = Camera.main;
         tl = GetComponent<TrajectoryLine>();
-        glue = null;
         glueObject = null;
     }
 
@@ -59,20 +56,23 @@ public class DragForce : MonoBehaviour
                 // when the finger hits the screen
                 if (touch.phase == TouchPhase.Began)
                 {
+                    // records the starting position of the drag
                     startPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
                 }
                 // when the finger drags across the screen
                 if (touch.phase == TouchPhase.Moved)
                 {
+                    // renders the current position of the drag to the screen
                     Vector3 currentPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
                     tl.RenderLine(startPos, currentPos);
                 }
                 // when the finger leaves the screen
                 if (touch.phase == TouchPhase.Ended)
                 {
+                    // assigns value to the glue that is currently attached to the hold that the climber is on top of
                     glueObject = GameObject.Find("glue");
 
-                    // the glue is dettached
+                    // if the glue is attached, then detach and destroy the glue
                     if (glueObject != null)
                     {
                         glueObject.GetComponent<Glue>().DettachObject(gameObject);
@@ -84,6 +84,7 @@ public class DragForce : MonoBehaviour
                         isAttached = true;
                     }
 
+                    // records final position 
                     endPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
 
                     // creates the force output
@@ -96,7 +97,8 @@ public class DragForce : MonoBehaviour
                         rb.AddForce(force * power, ForceMode2D.Impulse);
                         ph.TakeDamage(damage);
                     }
-
+                    
+                    // plays jump sound
                     StartCoroutine(FinishSound());
 
                     tl.EndLine();

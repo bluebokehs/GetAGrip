@@ -33,7 +33,7 @@ public class Hold : MonoBehaviour
     {
         if (degrationTime > 0)
         {
-            //StartCoroutine(Degrade(degrationTime));
+            StartCoroutine(Degrade(degrationTime));
         }
     }
 

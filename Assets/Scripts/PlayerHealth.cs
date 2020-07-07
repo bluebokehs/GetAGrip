@@ -7,8 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    public int regenRate = 1;
-    public int regeneration = 5;
+    public int regeneration = 1;
     public float waitTime = 1;
 
     public StaminaBar staminaBar;

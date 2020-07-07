@@ -10,6 +10,8 @@ public class BackgroundGenerator : MonoBehaviour
     public Queue<GameObject> objects = new Queue<GameObject>();
     public float count = 0;
 
+    GameObject currentBackground;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -19,6 +21,8 @@ public class BackgroundGenerator : MonoBehaviour
         backgroundMap.Add(0f, backgrounds[0]);
         backgroundMap.Add(45f, backgrounds[1]);
 
+        currentBackground = backgroundMap[0];
+
         GenerateBackground();
     }
 
@@ -26,9 +30,8 @@ public class BackgroundGenerator : MonoBehaviour
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
-        GameObject currentBackground = backgroundMap[0];
-
-        if (player.transform.position.y > count - 25)
+        // checks to see if the player has reached a ceratin height above the previous backgrounds
+        if (player.transform.position.y > count - 16)
         {
             // removes last background
             Destroy(objects.Dequeue());
@@ -44,16 +47,17 @@ public class BackgroundGenerator : MonoBehaviour
 
             // add that background to the top of the queue
             objects.Enqueue(Instantiate(currentBackground, new Vector3(0f, count, 0f), Quaternion.identity) as GameObject);
-            count += 10;
+            count += currentBackground.GetComponent<SpriteRenderer>().bounds.size.y;
         }
     }
 
     public void GenerateBackground()
     {
+        // creates five backgrounds to begin with
         for (int i = 0; i < 5; i++)
         {
             objects.Enqueue(Instantiate(backgrounds[0], new Vector3(0f, count, 0f), Quaternion.identity) as GameObject);
-            count += 10;
+            count += currentBackground.GetComponent<SpriteRenderer>().bounds.size.y;
         }
     }
 }

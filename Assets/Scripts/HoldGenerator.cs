@@ -11,7 +11,7 @@ public class HoldGenerator : MonoBehaviour
     public GameObject[] holds;
     public Queue<GameObject> objects = new Queue<GameObject>();
 
-    Vector3 spawnPosition = new Vector3(0f,-2f,0f);
+    Vector3 spawnPosition = new Vector3(0f,-1f,0f);
 
     // run before environment created
     void Awake()
