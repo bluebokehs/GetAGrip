@@ -2504,7 +2504,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 8117273198366140144}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333406953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 097b551f2844b054290f18a39bf892e9, type: 3}
   m_Name: 
@@ -2801,8 +2801,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.035652522, y: 5.765388}
-  m_Size: {x: 4.6919146, y: 8.007708}
+  m_Offset: {x: 0.035652522, y: 4.963564}
+  m_Size: {x: 4.6919146, y: 9.61139}
   m_Direction: 0
 --- !u!50 &1333406968
 Rigidbody2D:
@@ -2844,7 +2844,6 @@ MonoBehaviour:
   minPower: {x: -3.5, y: -3.5}
   maxPower: {x: 3.5, y: 3.5}
   multiplier: 1.5
-  ph: {fileID: 1333406966}
   stamina: {fileID: 1390608829}
   isAttached: 1
   jumpSound: {fileID: 1333406972}
@@ -4705,6 +4704,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1333406955, guid: 0c63f426aaa9b469dbbd33e57a0120cf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1333406966, guid: 0c63f426aaa9b469dbbd33e57a0120cf, type: 3}
       propertyPath: staminaBar
       value: 

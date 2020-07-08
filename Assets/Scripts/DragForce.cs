@@ -23,7 +23,7 @@ public class DragForce : MonoBehaviour
     Vector3 placeHoldPos;
 
     TrajectoryLine tl;
-    public PlayerHealth ph;
+    PlayerHealth ph;
 
     public Slider stamina;
 
@@ -37,6 +37,7 @@ public class DragForce : MonoBehaviour
     {
         camera = Camera.main;
         tl = GetComponent<TrajectoryLine>();
+        ph = GetComponent<PlayerHealth>();
         glueObject = null;
     }
 

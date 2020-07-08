@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour
 
     public int maxHealth = 100;
     public int currentHealth;
-    public int regeneration = 1;
+    public int regenRate = 2;
     public float waitTime = 1;
 
     public StaminaBar staminaBar;
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
 		{
             if (currentHealth < maxHealth)
             {
-                currentHealth++;
+                currentHealth = currentHealth + regenRate;
             }
             else
             {

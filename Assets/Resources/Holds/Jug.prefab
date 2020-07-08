@@ -114,5 +114,5 @@ MonoBehaviour:
   holdName: Jug
   description: description
   holdSprite: {fileID: 0}
-  staminaCost: 4
+  staminaCost: 0
   degrationTime: 0

@@ -13,15 +13,17 @@ public class Hold : MonoBehaviour
     public int degrationTime;
 
     DragForce dragForce;
-
     HoldGenerator holdGenerator;
+    Rigidbody2D rb;
+    PlayerHealth playerStamina;
 
     void Start()
     {
         holdSprite = this.GetComponent<SpriteRenderer>();
         dragForce = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
-
         holdGenerator = GameObject.FindGameObjectWithTag("Generator").GetComponent<HoldGenerator>();
+        rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
+        playerStamina = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
     }
 
     public void RemoveObject()
@@ -29,11 +31,15 @@ public class Hold : MonoBehaviour
         holdGenerator.RemoveObject();
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D col)
     {
         if (degrationTime > 0)
         {
             StartCoroutine(Degrade(degrationTime));
+        }
+        if (staminaCost > 0)
+        {
+            StartCoroutine(StaminaReduce(staminaCost));
         }
     }
 
@@ -44,10 +50,23 @@ public class Hold : MonoBehaviour
 
     IEnumerator Degrade(int waitTime)
     {
-        Debug.Log("before");
         yield return new WaitForSeconds(waitTime);
-        Debug.Log("after");
         RemoveObject();
-        Debug.Log("removed");
+
+        // make climber not kinematic
+        rb.bodyType = RigidbodyType2D.Dynamic;
+    }
+
+    IEnumerator StaminaReduce(int stamina)
+    {
+        while (true)
+		{
+            if (playerStamina.currentHealth > 0)
+            {
+                playerStamina.currentHealth -= stamina;
+                Debug.Log("reducing");
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 }

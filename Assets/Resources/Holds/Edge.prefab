@@ -114,5 +114,5 @@ MonoBehaviour:
   holdName: Edge
   description: description
   holdSprite: {fileID: 0}
-  staminaCost: 7
+  staminaCost: 2
   degrationTime: 1
