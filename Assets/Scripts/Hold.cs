@@ -7,19 +7,23 @@ public class Hold : MonoBehaviour
     public string holdName;
     public string description;
 
-    public SpriteRenderer holdSprite;
-
     public int staminaCost;
     public int degrationTime;
+
+    SpriteRenderer holdSprite;
+    ParticleSystem debris;
 
     DragForce dragForce;
     HoldGenerator holdGenerator;
     Rigidbody2D rb;
     PlayerHealth playerStamina;
+    
 
     void Start()
     {
         holdSprite = this.GetComponent<SpriteRenderer>();
+        debris = this.GetComponent<ParticleSystem>();
+
         dragForce = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
         holdGenerator = GameObject.FindGameObjectWithTag("Generator").GetComponent<HoldGenerator>();
         rb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
@@ -50,6 +54,11 @@ public class Hold : MonoBehaviour
 
     IEnumerator Degrade(int waitTime)
     {
+        if (debris != null)
+        {
+            debris.Play();
+        }
+
         yield return new WaitForSeconds(waitTime);
         RemoveObject();
 
@@ -64,7 +73,6 @@ public class Hold : MonoBehaviour
             if (playerStamina.currentHealth > 0)
             {
                 playerStamina.currentHealth -= stamina;
-                Debug.Log("reducing");
             }
             yield return new WaitForSeconds(1);
         }

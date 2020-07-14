@@ -7,10 +7,16 @@ public class MainMenu : MonoBehaviour
 {
     public AudioSource source;
 
-    public void PlayGame()
+    public void PlayEndlessGame()
     {
         StartCoroutine(FinishSound());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("EndlessMode");
+        Time.timeScale = 1f;
+    }
+    public void PlaySpeedGame()
+    {
+        StartCoroutine(FinishSound());
+        SceneManager.LoadScene("SpeedMode");
         Time.timeScale = 1f;
     }
 
