@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9b42c5ff6a3bf420e9ed9e928a824c87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 28894b5b43ea54894b0379e83e2dc50a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.08}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -113,10 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d351c06228bd4d90b2762f704b259b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdName: Edge
-  description: description
-  staminaCost: 2
-  degrationTime: 1
+  staminaCost: 0.02
+  degrationTime: 6
 --- !u!198 &-2610147456213505885
 ParticleSystem:
   m_ObjectHideFlags: 0

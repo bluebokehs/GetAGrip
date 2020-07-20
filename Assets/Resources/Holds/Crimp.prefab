@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0790f54ff24404568a13f0e248c29ef2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cf1c7bad3c58485d9720e37a3b7cba1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.25, y: 0.21875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -113,10 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d351c06228bd4d90b2762f704b259b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdName: Crimp
-  description: description
-  staminaCost: 2
-  degrationTime: 5
+  staminaCost: 0.06
+  degrationTime: 2
 --- !u!198 &-4035136901982374362
 ParticleSystem:
   m_ObjectHideFlags: 0

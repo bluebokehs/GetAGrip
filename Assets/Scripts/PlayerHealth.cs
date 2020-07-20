@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int maxHealth = 100;
-    public int currentHealth;
-    public int regenRate = 2;
-    public float waitTime = 1;
+    public float maxHealth = 100f;
+    public float currentHealth;
+    public float regenRate = 0.0000005f;
+    public float waitTime = 1f;
 
     public StaminaBar staminaBar;
 
@@ -16,29 +16,27 @@ public class PlayerHealth : MonoBehaviour
 	{
         currentHealth = maxHealth;
         staminaBar.SetMaxHealth(maxHealth);
-        StartCoroutine(Regen());
-	}
-
-    IEnumerator Regen()
-	{
-        while (true)
-		{
-            if (currentHealth < maxHealth)
-            {
-                currentHealth = currentHealth + regenRate;
-            }
-            else
-            {
-                currentHealth = maxHealth;
-            }
-            yield return new WaitForSeconds(waitTime);
-        }
 	}
 
     void Update()
 	{
+        if (currentHealth < maxHealth)
+        {
+            //StartCoroutine(Regen());
+        }
         staminaBar.SetHealth(currentHealth);
     }
+
+    IEnumerator Regen()
+	{
+        for (float health = currentHealth; health <= maxHealth; health += regenRate)
+		{
+            Debug.Log("regenerating");
+            currentHealth = health;
+            yield return new WaitForSeconds(Time.deltaTime);
+        }
+        currentHealth = maxHealth;
+	}
 
     public void TakeDamage(int damage)
 	{

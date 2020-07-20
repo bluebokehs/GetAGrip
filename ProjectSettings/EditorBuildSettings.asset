@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EndlessMode.unity
     guid: 058e06431e19245e08768afea8b5d124
-  - enabled: 1
-    path: Assets/Scenes/SpeedMode.unity
-    guid: 5a05a05a3c4944411817bf3ba01dd0a0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

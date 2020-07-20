@@ -16,16 +16,10 @@ public class Climb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("isClimbing", false);
+        
 
         //animate
         StartCoroutine(Animate());
-
-        // when climber lets go of the next force, the glue deletes
-        //if ()
-        //{
-        //    glue.DettachObject(gameObject);
-        //}
     }
 
     void CreateGlue(Vector3 position, GameObject other)
@@ -58,7 +52,7 @@ public class Climb : MonoBehaviour
     IEnumerator Animate()
 	{
         //animator
-        animator.SetBool("isClimbing", true);
+        animator.SetBool("isJumping", true);
         yield return new WaitForSeconds(waitTime);
     }
 }

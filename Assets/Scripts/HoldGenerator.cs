@@ -27,7 +27,7 @@ public class HoldGenerator : MonoBehaviour
             spawnPosition.y += Random.Range(minY, maxY);
             spawnPosition.x = Random.Range(-levelWidth, levelWidth);
 
-            objects.Enqueue(Instantiate(holds[Random.Range(0,3)], spawnPosition, Quaternion.identity) as GameObject);
+            objects.Enqueue(Instantiate(holds[Random.Range(0,4)], spawnPosition, Quaternion.identity) as GameObject);
         }
     }
 
@@ -42,6 +42,6 @@ public class HoldGenerator : MonoBehaviour
         spawnPosition.y += Random.Range(minY, maxY);
         spawnPosition.x = Random.Range(-levelWidth, levelWidth);
 
-        objects.Enqueue(Instantiate(holds[Random.Range(0, 3)], spawnPosition, Quaternion.identity) as GameObject);
+        objects.Enqueue(Instantiate(holds[Random.Range(0, 4)], spawnPosition, Quaternion.identity) as GameObject);
     }
 }

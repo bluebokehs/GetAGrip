@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class CameraFollow : MonoBehaviour
         if (target.position.y < transform.Find("Edge").position.y)
 		{
             FindObjectOfType<GameManager>().EndGame();
+		}
+
+        // if the player goes above the mountain top, win
+        if (SceneManager.GetActiveScene().name != "EndlessMode" && target.position.y > GameObject.Find("MountainTop").transform.position.y)
+		{
+            FindObjectOfType<TimerManager>().WinGame();
 		}
     }
 }

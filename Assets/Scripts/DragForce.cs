@@ -29,8 +29,11 @@ public class DragForce : MonoBehaviour
 
     GameObject glueObject;
     public bool isAttached = true;
+    public bool touchUI = false;
 
     public AudioSource jumpSound;
+
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +55,7 @@ public class DragForce : MonoBehaviour
 
             Touch touch = Input.GetTouch(0);
 
-            if (isAttached == true)
+            if (isAttached == true && touchUI == false)
             {
                 // when the finger hits the screen
                 if (touch.phase == TouchPhase.Began)
@@ -80,7 +83,7 @@ public class DragForce : MonoBehaviour
                         Destroy(glueObject);
                         isAttached = false;
                     }
-                    else
+                    else if (glueObject == null)
                     {
                         isAttached = true;
                     }
@@ -106,6 +109,18 @@ public class DragForce : MonoBehaviour
                 }
             }
         }
+
+        if (isAttached)
+        {
+            animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
+        }
+
+        touchUI = false;
+
     }
 
     IEnumerator FinishSound()

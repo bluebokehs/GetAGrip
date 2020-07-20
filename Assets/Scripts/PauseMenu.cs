@@ -8,6 +8,12 @@ public class PauseMenu : MonoBehaviour
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
+    public DragForce dF;
+
+    void Start()
+    {
+        dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+    }
 
     public void PauseHandler ()
     {
@@ -23,6 +29,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume ()
 	{
+        dF.touchUI = true;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -30,13 +37,9 @@ public class PauseMenu : MonoBehaviour
 
     void Pause ()
 	{
+        dF.touchUI = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
 	}
-
-    public void LoadMenu ()
-	{
-        SceneManager.LoadScene("Menu");
-    }
 }
