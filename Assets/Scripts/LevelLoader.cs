@@ -5,48 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public AudioSource source;
     public Animator transition;
+    public DragForce dF;
 
     public float transitionTime = 1f;
 
+    void Start()
+    {
+        dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+    }
+
+    public void PlayTutorial()
+    {
+        StartCoroutine(Transition("Tutorial"));
+        Time.timeScale = 1f;
+    }
+
     public void PlayEndlessGame()
     {
-        StartCoroutine(FinishSound());
         StartCoroutine(Transition("EndlessMode"));
         Time.timeScale = 1f;
     }
+    
     public void PlaySpeedGame()
     {
-        StartCoroutine(FinishSound());
         StartCoroutine(Transition("SpeedMode"));
         Time.timeScale = 1f;
     }
 
     public void PlayMenu()
     {
-        StartCoroutine(FinishSound());
         StartCoroutine(Transition("Menu"));
         Time.timeScale = 1f;
     }
 
-    public void PlaySound()
-    {
-        StartCoroutine(FinishSound());
-    }
-
-    IEnumerator FinishSound()
-    {
-        source.Play();
-        yield return new WaitForSeconds(source.clip.length);
-    }
-
     IEnumerator Transition(string levelName)
     {
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            dF.touchUI = true;
+        }
         transition.SetTrigger("Start");
-        Debug.Log("before");
         yield return new WaitForSeconds(transitionTime);
-        Debug.Log("after");
         SceneManager.LoadScene(levelName);
     }
 }

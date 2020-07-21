@@ -15,6 +15,8 @@ public class Hold : MonoBehaviour
     HoldGenerator holdGenerator;
     Rigidbody2D rb;
     PlayerHealth playerStamina;
+
+    public bool holdAttached;
     
 
     void Start()
@@ -45,6 +47,7 @@ public class Hold : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D col)
     {
+        holdAttached = true;
         if (degrationTime > 0)
         {
             StartCoroutine(Degrade(degrationTime));
@@ -54,6 +57,7 @@ public class Hold : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D other)
     {
+        holdAttached = false;
         RemoveObject();
     }
 

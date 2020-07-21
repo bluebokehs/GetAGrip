@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d351c06228bd4d90b2762f704b259b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: 0.02
+  staminaCost: 0.2
   degrationTime: 6
 --- !u!198 &-2610147456213505885
 ParticleSystem:
