@@ -12,31 +12,30 @@ public class LevelLoader : MonoBehaviour
 
     void Start()
     {
-        dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+        if (SceneManager.GetActiveScene().name != "Menu")
+        {
+            dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+        }
     }
 
     public void PlayTutorial()
     {
         StartCoroutine(Transition("Tutorial"));
-        Time.timeScale = 1f;
     }
 
     public void PlayEndlessGame()
     {
         StartCoroutine(Transition("EndlessMode"));
-        Time.timeScale = 1f;
     }
     
     public void PlaySpeedGame()
     {
         StartCoroutine(Transition("SpeedMode"));
-        Time.timeScale = 1f;
     }
 
     public void PlayMenu()
     {
         StartCoroutine(Transition("Menu"));
-        Time.timeScale = 1f;
     }
 
     IEnumerator Transition(string levelName)
@@ -45,6 +44,7 @@ public class LevelLoader : MonoBehaviour
         {
             dF.touchUI = true;
         }
+        Time.timeScale = 1f;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelName);

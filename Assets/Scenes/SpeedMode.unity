@@ -2676,6 +2676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39db986e8c9fc40a69052d274d2fdd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winMenu: {fileID: 1417756999}
   timeText: {fileID: 0}
   seconds: 0
   minutes: 0
@@ -3424,6 +3425,7 @@ GameObject:
   - component: {fileID: 1417757000}
   - component: {fileID: 1417757002}
   - component: {fileID: 1417757001}
+  - component: {fileID: 1417757003}
   m_Layer: 5
   m_Name: WinMenu
   m_TagString: Untagged
@@ -3491,6 +3493,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417756999}
   m_CullTransparentMesh: 0
+--- !u!114 &1417757003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417756999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3b9f0ab7e9b416e82b7b03a9149965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 1176630880}
 --- !u!1 &1457247631
 GameObject:
   m_ObjectHideFlags: 0
@@ -3983,6 +3998,7 @@ GameObject:
   - component: {fileID: 1667272824}
   - component: {fileID: 1667272826}
   - component: {fileID: 1667272825}
+  - component: {fileID: 1667272827}
   m_Layer: 5
   m_Name: GameOverMenu
   m_TagString: Untagged
@@ -4049,6 +4065,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667272823}
   m_CullTransparentMesh: 0
+--- !u!114 &1667272827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667272823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3b9f0ab7e9b416e82b7b03a9149965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 1176630880}
 --- !u!1 &1730060605
 GameObject:
   m_ObjectHideFlags: 0
