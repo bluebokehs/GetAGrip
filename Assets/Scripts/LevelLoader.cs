@@ -7,6 +7,7 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
     public DragForce dF;
+    public AdsManager adsManager;
 
     public float transitionTime = 1f;
 
@@ -15,6 +16,7 @@ public class LevelLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu")
         {
             dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
+            adsManager = GameObject.FindGameObjectWithTag("Ads").GetComponent<AdsManager>();
         }
     }
 
@@ -28,9 +30,43 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(Transition("EndlessMode"));
     }
     
-    public void PlaySpeedGame()
+    public void PlayHappyFeet()
     {
-        StartCoroutine(Transition("SpeedMode"));
+        StartCoroutine(Transition("HappyFeet"));
+    }
+
+    public void PlayRockyRoad()
+    {
+        StartCoroutine(Transition("RockyRoad"));
+    }    
+
+    public void PlaySingingInTheStrain()
+    {
+        StartCoroutine(Transition("SingingInTheStrain"));
+    }
+
+    public void PlayBackInCrack()
+    {
+        StartCoroutine(Transition("BackInCrack"));
+    }
+
+    public void PlayCaliceInMalice()
+    {
+        StartCoroutine(Transition("CaliceInMalice"));
+    }
+
+    public void PlayLivingOnALayer()
+    {
+        StartCoroutine(Transition("LivingOnALayer"));
+    }
+    public void PlayPebbleTrebble()
+    {
+        StartCoroutine(Transition("PebbleTrebble"));
+    }
+
+    public void PlayCruisingForABruising()
+    {
+        StartCoroutine(Transition("CruisingForABruising"));
     }
 
     public void PlayMenu()
@@ -43,7 +79,10 @@ public class LevelLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu")
         {
             dF.touchUI = true;
+            // count for advertisements
+            adsManager.AddToCount();
         }
+        // unpauses
         Time.timeScale = 1f;
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);

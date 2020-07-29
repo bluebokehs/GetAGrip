@@ -2891,6 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39db986e8c9fc40a69052d274d2fdd8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winMenu: {fileID: 0}
   timeText: {fileID: 0}
   seconds: 0
   minutes: 0
@@ -3184,7 +3185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dc4a76126244b4c93f68510548c0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power: 2.5
+  power: 3
   rb: {fileID: 1347970028}
   minPower: {x: -3.5, y: -3.5}
   maxPower: {x: 3.5, y: 3.5}
@@ -3194,6 +3195,8 @@ MonoBehaviour:
   touchUI: 0
   jumpSound: {fileID: 1347970025}
   animator: {fileID: 1347970029}
+  white: {fileID: 9100000, guid: bca146fbe769142a38b4af3f321885a2, type: 2}
+  black: {fileID: 9100000, guid: 91e19ec4ade5446e18935e93874d5921, type: 2}
 --- !u!114 &1347970024
 MonoBehaviour:
   m_ObjectHideFlags: 0

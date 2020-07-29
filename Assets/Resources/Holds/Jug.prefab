@@ -111,5 +111,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d351c06228bd4d90b2762f704b259b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staminaCost: -0.04
+  staminaCost: -0.4
   degrationTime: 0
+  holdAttached: 0

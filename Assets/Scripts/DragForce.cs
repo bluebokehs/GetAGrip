@@ -8,7 +8,6 @@ public class DragForce : MonoBehaviour
 {
     public float power = 2f;
     public Rigidbody2D rb;
-
     public Vector2 minPower;
     public Vector2 maxPower;
 
@@ -34,6 +33,8 @@ public class DragForce : MonoBehaviour
     public AudioSource jumpSound;
 
     public Animator animator;
+    public RuntimeAnimatorController white;
+    public RuntimeAnimatorController black;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,15 @@ public class DragForce : MonoBehaviour
         tl = GetComponent<TrajectoryLine>();
         ph = GetComponent<PlayerHealth>();
         glueObject = null;
+
+        if (PlayerPrefs.GetString("PlayerSprite") == "white")
+        {
+            animator.runtimeAnimatorController = white;
+        }
+        else if (PlayerPrefs.GetString("PlayerSprite") == "black")
+        {
+            animator.runtimeAnimatorController = black;
+        }
     }
 
     // Update is called once per frame

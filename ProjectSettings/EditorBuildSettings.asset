@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/EndlessMode.unity
     guid: 058e06431e19245e08768afea8b5d124
   - enabled: 1
-    path: Assets/Scenes/SpeedMode.unity
+    path: Assets/Scenes/HappyFeet.unity
     guid: 97b20d22a13844955902f9e69a4674ae
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
