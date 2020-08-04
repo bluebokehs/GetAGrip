@@ -30,6 +30,11 @@ public class Timer : MonoBehaviour
         timeText.text = FormatTime(gameTimer);
     }
 
+    void UnpauseTime()
+    {
+        timerPaused = true;
+    }
+
     string FormatTime (float time)
     {
         int intTime = (int)time;
@@ -39,9 +44,10 @@ public class Timer : MonoBehaviour
         fraction = (fraction % 1000);
         string text = String.Format ("{0:00}:{1:00}:{2:000}", minutes, seconds, fraction);
 
-        if (time < PlayerPrefs.GetFloat("Time") && winMenu.activeInHierarchy)
+        if (time < GameControl.control.time && winMenu.activeInHierarchy)
         {
-            PlayerPrefs.SetFloat("Time", gameTimer);
+            GameControl.control.time = gameTimer;
+            GameControl.control.Save();
         }
         return text;
      }

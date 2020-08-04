@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DragForce : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class DragForce : MonoBehaviour
 
     TrajectoryLine tl;
     PlayerHealth ph;
+    Timer timer;
 
     public Slider stamina;
 
@@ -42,6 +44,10 @@ public class DragForce : MonoBehaviour
         camera = Camera.main;
         tl = GetComponent<TrajectoryLine>();
         ph = GetComponent<PlayerHealth>();
+        if (SceneManager.GetActiveScene().name == "HappyFeet")
+        {
+            timer = GameObject.FindGameObjectWithTag("Timer").GetComponent<Timer>();
+        }
         glueObject = null;
 
         if (PlayerPrefs.GetString("PlayerSprite") == "white")
@@ -62,7 +68,6 @@ public class DragForce : MonoBehaviour
         // check for a single touch 
         if (Input.touchCount > 0)
         {
-
             Touch touch = Input.GetTouch(0);
 
             if (isAttached == true && touchUI == false)
@@ -70,9 +75,16 @@ public class DragForce : MonoBehaviour
                 // when the finger hits the screen
                 if (touch.phase == TouchPhase.Began)
                 {
+                    // starts the timer
+                    if (SceneManager.GetActiveScene().name == "HappyFeet")
+                    {
+                        timer.timerPaused = false;
+                    }
+                    
                     // records the starting position of the drag
                     startPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
                 }
+
                 // when the finger drags across the screen
                 if (touch.phase == TouchPhase.Moved)
                 {
@@ -80,6 +92,7 @@ public class DragForce : MonoBehaviour
                     Vector3 currentPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
                     tl.RenderLine(startPos, currentPos);
                 }
+
                 // when the finger leaves the screen
                 if (touch.phase == TouchPhase.Ended)
                 {
@@ -89,8 +102,7 @@ public class DragForce : MonoBehaviour
                     // if the glue is attached, then detach and destroy the glue
                     if (glueObject != null)
                     {
-                        glueObject.GetComponent<Glue>().DettachObject(gameObject);
-                        Destroy(glueObject);
+                        glueObject.GetComponent<Glue>().DettachObject(this.gameObject);
                         isAttached = false;
                     }
                     else if (glueObject == null)
@@ -130,7 +142,6 @@ public class DragForce : MonoBehaviour
         }
 
         touchUI = false;
-
     }
 
     IEnumerator FinishSound()

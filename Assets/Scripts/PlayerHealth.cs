@@ -7,12 +7,11 @@ public class PlayerHealth : MonoBehaviour
 
     public float maxHealth = 100f;
     public float currentHealth;
-    public float regenRate = 0.0000005f;
-    public float waitTime = 1f;
+    public float regenRate = 0.05f;
 
     public StaminaBar staminaBar;
 
-    void Start()
+    void Awake()
 	{
         currentHealth = maxHealth;
         staminaBar.SetMaxHealth(maxHealth);
@@ -20,23 +19,21 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
 	{
-        if (currentHealth < maxHealth)
+
+        // regenerate
+        currentHealth += regenRate * Time.deltaTime;
+
+        // checks bounds
+        if (currentHealth > maxHealth)
         {
-            //StartCoroutine(Regen());
+            currentHealth = 100;
+        }
+        if (currentHealth < 0)
+        {
+            currentHealth = 0;
         }
         staminaBar.SetHealth(currentHealth);
     }
-
-    IEnumerator Regen()
-	{
-        for (float health = currentHealth; health <= maxHealth; health += regenRate)
-		{
-            Debug.Log("regenerating");
-            currentHealth = health;
-            yield return new WaitForSeconds(Time.deltaTime);
-        }
-        currentHealth = maxHealth;
-	}
 
     public void TakeDamage(int damage)
 	{

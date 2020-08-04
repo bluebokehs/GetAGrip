@@ -7,10 +7,10 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private int popUpIndex;
 
-    public Hold jug;
-    public Hold jug1;
-    public Hold pinch;
-    public Hold sloper;
+    public GameObject jug;
+    public GameObject jug1;
+    public GameObject pinch;
+    public GameObject sloper;
 
     // Update is called once per frame
     void Update()
@@ -29,28 +29,28 @@ public class TutorialManager : MonoBehaviour
 
         if (popUpIndex == 0)
         {
-            if(jug.holdAttached)
+            if(jug.GetComponent<Hold>().holdAttached)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 1)
         {
-            if(jug1.holdAttached)
+            if(jug1.GetComponent<Hold>().holdAttached)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 2)
         {
-            if(pinch.holdAttached)
+            if(pinch.GetComponent<Hold>().holdAttached)
             {
                 popUpIndex++;
             }
         }
         else if (popUpIndex == 3)
         {
-            if(sloper.holdAttached)
+            if(sloper.GetComponent<Hold>().holdAttached)
             {
                 popUpIndex++;
             }

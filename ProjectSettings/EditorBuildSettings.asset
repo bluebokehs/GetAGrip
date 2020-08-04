@@ -12,9 +12,30 @@ EditorBuildSettings:
     path: Assets/Scenes/EndlessMode.unity
     guid: 058e06431e19245e08768afea8b5d124
   - enabled: 1
+    path: Assets/Scenes/Tutorial_Old.unity
+    guid: 7c7b912fb06f24f2d805c0c1f1d1692e
+  - enabled: 0
     path: Assets/Scenes/HappyFeet.unity
     guid: 97b20d22a13844955902f9e69a4674ae
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 7c7b912fb06f24f2d805c0c1f1d1692e
+  - enabled: 0
+    path: Assets/Scenes/BackInCrack.unity
+    guid: 68a2011344a48454b92fbb133d575dcf
+  - enabled: 0
+    path: Assets/Scenes/CaliceInMalice.unity
+    guid: ed76fc339658f4a4eb70c1cd70c3f8ab
+  - enabled: 0
+    path: Assets/Scenes/CruisingForABruising.unity
+    guid: fd4b22079395644458448e457922193c
+  - enabled: 0
+    path: Assets/Scenes/LivingOnALayer.unity
+    guid: 4ba6331498a9f41cbb5db30f83aebe84
+  - enabled: 0
+    path: Assets/Scenes/PebbleTrebble.unity
+    guid: 717712235c6fe48949f0a77221abba8c
+  - enabled: 0
+    path: Assets/Scenes/RockyRoad.unity
+    guid: e33ce6f6ff58d4a65b56cdb083b7d469
+  - enabled: 0
+    path: Assets/Scenes/SingingInTheStrain.unity
+    guid: 07f73e8d6debe4f9aaae954d5efb3119
   m_configObjects: {}

@@ -29,9 +29,9 @@ public class CameraFollow : MonoBehaviour
 		}
 
         // if the player goes above the mountain top, win
-        if (SceneManager.GetActiveScene().name != "EndlessMode" && target.position.y > GameObject.Find("MountainTop").transform.position.y)
-		{
+        if (SceneManager.GetActiveScene().name == "HappyFeet" && target.position.y > GameObject.Find("MountainTop").transform.position.y) 
+        {
             FindObjectOfType<TimerManager>().WinGame();
-		}
+        }
     }
 }

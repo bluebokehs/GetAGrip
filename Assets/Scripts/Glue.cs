@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Glue : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class Glue : MonoBehaviour
         // makes a hold a trigger in order to pass through the hold
         var col = hold.GetComponent<CircleCollider2D>();
         col.isTrigger = false;
+
+        other.GetComponent<Climb>().currentHold = hold;
     }
 
     public void DettachObject (GameObject other)
@@ -42,6 +45,11 @@ public class Glue : MonoBehaviour
         // makes a hold a trigger in order to pass through the hold
         var col = hold.GetComponent<Collider2D>();
         col.isTrigger = true;
+
+        if (SceneManager.GetActiveScene().name == "EndlessMode" || SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            GameObject.FindGameObjectWithTag("Generator").GetComponent<HoldGenerator>().RemoveObject(other.GetComponent<Climb>().currentHold);
+        }
     }
 
     public void LateUpdate()

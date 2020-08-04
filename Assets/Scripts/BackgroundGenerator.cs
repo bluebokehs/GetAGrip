@@ -19,7 +19,17 @@ public class BackgroundGenerator : MonoBehaviour
 
         backgroundMap = new Dictionary<float, GameObject>();
         backgroundMap.Add(0f, backgrounds[0]);
-        backgroundMap.Add(45f, backgrounds[1]);
+        backgroundMap.Add(30f, backgrounds[1]);
+        backgroundMap.Add(60f, backgrounds[2]);
+        backgroundMap.Add(90f, backgrounds[3]);
+        backgroundMap.Add(120f, backgrounds[0]);
+        backgroundMap.Add(150f, backgrounds[1]);
+        backgroundMap.Add(180f, backgrounds[2]);
+        backgroundMap.Add(210f, backgrounds[3]);
+        backgroundMap.Add(240f, backgrounds[0]);
+        backgroundMap.Add(270f, backgrounds[1]);
+        backgroundMap.Add(300f, backgrounds[2]);
+        backgroundMap.Add(330f, backgrounds[3]);
 
         currentBackground = backgroundMap[0];
 

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Generator
   - Hold
+  - Ads
+  - Timer
+  - Score
   layers:
   - Default
   - TransparentFX

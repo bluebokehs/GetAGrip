@@ -1500,7 +1500,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 665077591}
-        m_MethodName: PlaySpeedGame
+        m_MethodName: PlayRockyRoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2640,7 +2640,7 @@ GameObject:
   - component: {fileID: 1176630880}
   m_Layer: 5
   m_Name: TimeNumber
-  m_TagString: Untagged
+  m_TagString: Timer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2680,7 +2680,7 @@ MonoBehaviour:
   timeText: {fileID: 0}
   seconds: 0
   minutes: 0
-  timerPaused: 0
+  timerPaused: 1
 --- !u!114 &1176630881
 MonoBehaviour:
   m_ObjectHideFlags: 0

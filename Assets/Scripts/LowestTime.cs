@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using UnityEngine.SceneManagement;
 
 public class LowestTime : MonoBehaviour
 {
@@ -15,10 +14,10 @@ public class LowestTime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScore1.text = ReformatTime(PlayerPrefs.GetFloat("Time"));
-        highScore2.text = ReformatTime(PlayerPrefs.GetFloat("Time"));
-        highScore3.text = ReformatTime(PlayerPrefs.GetFloat("Time"));
-        highScore4.text = ReformatTime(PlayerPrefs.GetFloat("Time"));
+        highScore1.text = ReformatTime(GameControl.control.time);
+        highScore2.text = ReformatTime(GameControl.control.time);
+        highScore3.text = ReformatTime(GameControl.control.time);
+        highScore4.text = ReformatTime(GameControl.control.time);
     }
 
     string ReformatTime (float time)

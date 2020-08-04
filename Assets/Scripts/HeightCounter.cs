@@ -9,7 +9,7 @@ public class HeightCounter : MonoBehaviour
     public Transform target;
     public Text height;
     public Text finalHeight;
-    public GameObject highScore;
+    public GameObject highScoreBanner;
 
     int initHeightValue = 0;
     int currentPos = 0;
@@ -33,10 +33,11 @@ public class HeightCounter : MonoBehaviour
             height.text = currentPos.ToString("0");
             finalHeight.text = currentPos.ToString("0");
 
-            if (currentPos > PlayerPrefs.GetInt("HighScore", 0))
+            if (currentPos > GameControl.control.score)
             {
-                PlayerPrefs.SetInt("HighScore", currentPos);
-                highScore.SetActive(true);
+                GameControl.control.score = currentPos;
+                highScoreBanner.SetActive(true);
+                GameControl.control.Save();
             }
         }
         

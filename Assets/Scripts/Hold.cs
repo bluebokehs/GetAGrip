@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Hold : MonoBehaviour
 {
-    public float staminaCost;
+    //public float staminaCost;
     public int degrationTime;
 
     SpriteRenderer holdSprite;
@@ -37,7 +37,7 @@ public class Hold : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "EndlessMode")
         {
-            holdGenerator.RemoveObject();
+            holdGenerator.RemoveObject(this.gameObject);
         }
         else
         {
@@ -52,17 +52,12 @@ public class Hold : MonoBehaviour
         {
             StartCoroutine(Degrade(degrationTime));
         }
-        StartCoroutine(StaminaReduce(staminaCost));
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
-        holdAttached = false;
-        RemoveObject();
+        //StartCoroutine(StaminaReduce(staminaCost));
     }
 
     IEnumerator Degrade(int waitTime)
     {
+        Debug.Log("degrading");
         if (debris != null)
         {
             debris.Play();

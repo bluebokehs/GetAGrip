@@ -13,11 +13,11 @@ public class Climb : MonoBehaviour
 
     public DragForce dragForce;
 
+    public GameObject currentHold;
+
     // Update is called once per frame
     void Update()
     {
-        
-
         //animate
         StartCoroutine(Animate());
     }
@@ -42,11 +42,14 @@ public class Climb : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // On collision we simply create a glue object at any contact point.
+        currentHold = GameObject.FindGameObjectWithTag(col.gameObject.tag);
+
         dragForce.isAttached = true;
         if (col.gameObject.tag == "Hold")
         {
             CreateGlue(col.contacts[0].point, col.gameObject);
         }
+
     }
 
     IEnumerator Animate()

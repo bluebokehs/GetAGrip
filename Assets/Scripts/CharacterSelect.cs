@@ -10,10 +10,12 @@ public class CharacterSelect : MonoBehaviour
     public void ChangeToWhite()
     {
         PlayerPrefs.SetString("PlayerSprite", white);
+        PlayerPrefs.Save();
     }
 
     public void ChangeToBlack()
     {
         PlayerPrefs.SetString("PlayerSprite", black);
+        PlayerPrefs.Save();
     }
 }
