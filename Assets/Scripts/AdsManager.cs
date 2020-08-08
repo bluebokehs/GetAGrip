@@ -13,19 +13,12 @@ public class AdsManager : Singleton<AdsManager>
     public bool testMode = true;
 
     bool hasPaid = false;
-    int adCount;
+    int adCount = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         Advertisement.Initialize(gameID, testMode);
-
-        adCount = PlayerPrefs.GetInt("Ad Count");
-    }
-
-    public void AddToCount()
-    {
-        PlayerPrefs.SetInt("Ad Count", adCount + 1);
     }
 
     public void RemoveAds()
@@ -51,6 +44,7 @@ public class AdsManager : Singleton<AdsManager>
         {
             Advertisement.Show(myVideoPlacement);
             adStarted = true;
+            adCount += 1;
         }
     }
 }

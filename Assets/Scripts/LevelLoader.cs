@@ -7,7 +7,6 @@ public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
     public DragForce dF;
-    public AdsManager adsManager;
 
     public float transitionTime = 1f;
 
@@ -16,7 +15,6 @@ public class LevelLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu")
         {
             dF = GameObject.FindGameObjectWithTag("Player").GetComponent<DragForce>();
-            adsManager = GameObject.FindGameObjectWithTag("Ads").GetComponent<AdsManager>();
         }
     }
 
@@ -79,8 +77,6 @@ public class LevelLoader : MonoBehaviour
         if (SceneManager.GetActiveScene().name != "Menu")
         {
             dF.touchUI = true;
-            // count for advertisements
-            adsManager.AddToCount();
         }
         // unpauses
         Time.timeScale = 1f;
