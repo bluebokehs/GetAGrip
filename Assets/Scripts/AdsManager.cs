@@ -14,8 +14,6 @@ public class AdsManager : Singleton<AdsManager>
 
     bool hasPaid = false;
     int adCount;
-    public GameObject noAdsButton;
-    public GameObject restorePurchaseButton;
 
     // Start is called before the first frame update
     void Start()
@@ -33,15 +31,11 @@ public class AdsManager : Singleton<AdsManager>
     public void RemoveAds()
     {
         hasPaid = true;
-        noAdsButton.SetActive(false);
-        restorePurchaseButton.SetActive(true);
     }
 
     public void RestorePurchase()
     {
         hasPaid = false;
-        noAdsButton.SetActive(true);
-        restorePurchaseButton.SetActive(false);
     }
 
     // use after implementing coins!

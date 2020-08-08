@@ -122,10 +122,10 @@ class EdgeCollider2D;
 class PolygonCollider2D; 
 class TilemapCollider2D; 
 class ConstantForce; 
-class Effector2D; template <> void RegisterUnityClass<Effector2D>(const char*);
+class Effector2D; 
 class AreaEffector2D; 
 class BuoyancyEffector2D; 
-class PlatformEffector2D; template <> void RegisterUnityClass<PlatformEffector2D>(const char*);
+class PlatformEffector2D; 
 class PointEffector2D; 
 class SurfaceEffector2D; 
 class FlareLayer; 
@@ -321,7 +321,7 @@ void RegisterAllClasses()
 {
 void RegisterBuiltinTypes();
 RegisterBuiltinTypes();
-	//Total: 90 non stripped classes
+	//Total: 88 non stripped classes
 	//0. AnimationClip
 	RegisterUnityClass<AnimationClip>("Animation");
 	//1. Animator
@@ -478,29 +478,25 @@ RegisterBuiltinTypes();
 	RegisterUnityClass<CircleCollider2D>("Physics2D");
 	//77. Collider2D
 	RegisterUnityClass<Collider2D>("Physics2D");
-	//78. Effector2D
-	RegisterUnityClass<Effector2D>("Physics2D");
-	//79. Physics2DSettings
+	//78. Physics2DSettings
 	RegisterUnityClass<Physics2DSettings>("Physics2D");
-	//80. PhysicsMaterial2D
+	//79. PhysicsMaterial2D
 	RegisterUnityClass<PhysicsMaterial2D>("Physics2D");
-	//81. PlatformEffector2D
-	RegisterUnityClass<PlatformEffector2D>("Physics2D");
-	//82. Rigidbody2D
+	//80. Rigidbody2D
 	RegisterUnityClass<Rigidbody2D>("Physics2D");
-	//83. TextRendering::Font
+	//81. TextRendering::Font
 	RegisterUnityClass<TextRendering::Font>("TextRendering");
-	//84. TextRenderingPrivate::TextMesh
+	//82. TextRenderingPrivate::TextMesh
 	RegisterUnityClass<TextRenderingPrivate::TextMesh>("TextRendering");
-	//85. UI::Canvas
+	//83. UI::Canvas
 	RegisterUnityClass<UI::Canvas>("UI");
-	//86. UI::CanvasGroup
+	//84. UI::CanvasGroup
 	RegisterUnityClass<UI::CanvasGroup>("UI");
-	//87. UI::CanvasRenderer
+	//85. UI::CanvasRenderer
 	RegisterUnityClass<UI::CanvasRenderer>("UI");
-	//88. UnityConnectSettings
+	//86. UnityConnectSettings
 	RegisterUnityClass<UnityConnectSettings>("UnityConnect");
-	//89. WorldAnchor
+	//87. WorldAnchor
 	RegisterUnityClass<WorldAnchor>("VR");
 
 }
