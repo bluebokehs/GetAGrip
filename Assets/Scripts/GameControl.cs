@@ -41,6 +41,21 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        // create a file
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(Application.persistentDataPath + "/playerInfo.dat");
+        
+        PlayerData data = new PlayerData();
+        data.score = 0;
+        data.time = time;
+
+        // push data to file
+        bf.Serialize(file, data);
+        file.Close();
+    }
+
     public void Save()
     {
         // create a file

@@ -24,19 +24,16 @@ public class Climb : MonoBehaviour
 
     void CreateGlue(Vector3 position, GameObject other)
     {
-        if (other != ground)
-		{
-            var glue = (new GameObject("glue")).AddComponent<Glue>();
+        var glue = (new GameObject("glue")).AddComponent<Glue>();
 
-            // glue position at the contact point
-            glue.transform.position = position;
+        // glue position at the contact point
+        glue.transform.position = position;
 
-            // We make the object we collided with a parent of glue object
-            glue.transform.SetParent(other.transform);
+        // We make the object we collided with a parent of glue object
+        glue.transform.SetParent(other.transform);
 
-            // And now we call glue initialization
-            glue.AttachObject(gameObject);
-        }
+        // And now we call glue initialization
+        glue.AttachObject(gameObject);
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -44,12 +41,11 @@ public class Climb : MonoBehaviour
         // On collision we simply create a glue object at any contact point.
         currentHold = GameObject.FindGameObjectWithTag(col.gameObject.tag);
 
-        dragForce.isAttached = true;
         if (col.gameObject.tag == "Hold")
         {
+            dragForce.isAttached = true;
             CreateGlue(col.contacts[0].point, col.gameObject);
         }
-
     }
 
     IEnumerator Animate()

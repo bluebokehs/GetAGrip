@@ -144,8 +144,6 @@ public class IAPManager : Singleton<IAPManager>, IStoreListener
                     // no purchases are available to be restored.
                     Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
                 });
-
-                adsManager.RestorePurchase();
             }
             // Otherwise ...
             else

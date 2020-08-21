@@ -38,6 +38,9 @@ public class HeightCounter : MonoBehaviour
                 GameControl.control.score = currentPos;
                 highScoreBanner.SetActive(true);
                 GameControl.control.Save();
+
+                // put score into leaderboard
+                CloudOnceServices.instance.SubmitScoreToLeaderboard(GameControl.control.score);
             }
         }
         

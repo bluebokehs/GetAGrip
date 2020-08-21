@@ -29,7 +29,7 @@ public class DragForce : MonoBehaviour
     public Slider stamina;
 
     GameObject glueObject;
-    public bool isAttached = true;
+    public bool isAttached = false;
     public bool touchUI = false;
 
     public AudioSource jumpSound;
@@ -105,10 +105,6 @@ public class DragForce : MonoBehaviour
                         glueObject.GetComponent<Glue>().DettachObject(this.gameObject);
                         isAttached = false;
                     }
-                    else if (glueObject == null)
-                    {
-                        isAttached = true;
-                    }
 
                     // records final position 
                     endPos = camera.ScreenToWorldPoint(touch.position) + camOffset;
@@ -117,8 +113,9 @@ public class DragForce : MonoBehaviour
                     force = new Vector2(Mathf.Clamp(startPos.x - endPos.x, minPower.x, maxPower.x), Mathf.Clamp(startPos.y - endPos.y, minPower.y, maxPower.y));
                     int damage = (int)Convert.ToDouble(Math.Abs(force.y * multiplier));
 
+                    print(damage);
                     // checks to see if there is enough stamina, then moves and takes stamina
-                    if (damage <= stamina.value)
+                    if (damage <= stamina.value && damage > 1)
                     {
                         rb.AddForce(force * power, ForceMode2D.Impulse);
                         ph.TakeDamage(damage);

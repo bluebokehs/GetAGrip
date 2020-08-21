@@ -55,6 +55,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Data\JSONObject\Editor\EditorJsonHelper.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\CloudOnceEditor.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\CloudOnceUpgrader.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Data\CloudConfig.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Data\CloudOncePaths.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Data\CloudVariableData.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Data\PlatformIdData.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Data\PluginVersion.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\MenuLinks.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\AndroidManifestModifier.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\BuildUtils.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\GooglePlayGamesSetup\GPGAndroidSetup.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\GooglePlayGamesSetup\GPGSStrings.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\GooglePlayGamesSetup\GPGSUtil.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\PlistBuddyHelper.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\SerializationUtils.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\ValidationUtils.cs" />
+     <Compile Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\iOSPostBuild.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\AccordionElementEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\BezierLineRendererEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\BoxSliderEditor.cs" />
@@ -75,6 +93,10 @@
      <Compile Include="Assets\unity-ui-extensions\Editor\TextPicRenameEditor.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\UIExtensionsMenuOptions.cs" />
      <Compile Include="Assets\unity-ui-extensions\Editor\uGUITools.cs" />
+     <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.115.0.txt" />
+     <None Include="Assets\Extensions\GooglePlayGames\Editor\m2repository\com\google\games\gpgs-plugin-support\maven-metadata.xml" />
+     <None Include="Assets\Extensions\GooglePlayGames\Editor\GooglePlayGamesPluginDependencies.xml" />
+     <None Include="Assets\Extensions\CloudOnce\Internal\Editor\Utils\GooglePlayGamesSetup\template-AndroidManifest.txt" />
  <Reference Include="UnityEngine">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.0f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
@@ -273,14 +295,23 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.0f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEditor.Android.Extensions">
+ <HintPath>/Applications/Unity/Hub/Editor/2019.4.0f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.iOS.Extensions">
  <HintPath>/Applications/Unity/Hub/Editor/2019.4.0f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Advertisements.Editor">
- <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
+ <Reference Include="Google.IOSResolver_v1.2.115.0">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.115.0.dll</HintPath>
  </Reference>
- <Reference Include="UnityEngine.Monetization.Editor">
- <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/UnityAds/UnityEngine.Monetization.Editor.dll</HintPath>
+ <Reference Include="Google.VersionHandlerImpl_v1.2.115.0">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.115.0.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.VersionHandler">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+ </Reference>
+ <Reference Include="Google.JarResolver_v1.2.115.0">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.115.0.dll</HintPath>
  </Reference>
  <Reference Include="UDP">
  <HintPath>/Users/owenkern/Developer/GetAGrip/Assets/Plugins/UDP/UDP.dll</HintPath>
@@ -687,6 +718,9 @@
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
+ <Reference Include="UnityEngine.Monetization">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/UnityEngine.Monetization.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.2D.Animation.Runtime">
  <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
  </Reference>
@@ -695,6 +729,9 @@
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/Users/owenkern/Developer/GetAGrip/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
