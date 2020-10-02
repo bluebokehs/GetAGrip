@@ -9,6 +9,7 @@ TagManager:
   - Ads
   - Timer
   - Score
+  - CoinGenerator
   layers:
   - Default
   - TransparentFX

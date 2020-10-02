@@ -54,6 +54,7 @@ public class GameControl : MonoBehaviour
         // push data to file
         bf.Serialize(file, data);
         file.Close();
+        print("reset!");
     }
 
     public void Save()

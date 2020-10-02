@@ -308,6 +308,8 @@
      <Compile Include="Assets\Scripts\CharacterSelect.cs" />
      <Compile Include="Assets\Scripts\Climb.cs" />
      <Compile Include="Assets\Scripts\CloudOnceServices.cs" />
+     <Compile Include="Assets\Scripts\Coin.cs" />
+     <Compile Include="Assets\Scripts\CoinGenerator.cs" />
      <Compile Include="Assets\Scripts\DragForce.cs" />
      <Compile Include="Assets\Scripts\GameControl.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />

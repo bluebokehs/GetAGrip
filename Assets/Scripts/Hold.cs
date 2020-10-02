@@ -52,7 +52,6 @@ public class Hold : MonoBehaviour
         {
             StartCoroutine(Degrade(degrationTime));
         }
-        //StartCoroutine(StaminaReduce(staminaCost));
     }
 
     IEnumerator Degrade(int waitTime)
